@@ -1,4 +1,4 @@
-FROM golang:1.7.5
+FROM golang:1.7.5 as builder
 
 WORKDIR /go/src/github.com/redhatcop/gows
 
@@ -11,7 +11,7 @@ FROM scratch
 
 WORKDIR /opt
 
-ADD --from=0 /go/src/github.com/redhatcop/gows/gows /bin/gows
+COPY --from=builder /go/src/github.com/redhatcop/gows/gows /bin/gows
 
 EXPOSE 8080
 
