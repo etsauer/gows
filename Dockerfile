@@ -2,7 +2,6 @@ FROM golang:1.7.5 as builder
 
 WORKDIR /go/src/github.com/redhatcop/gows
 
-#RUN go get -d -v golang.org/x/net/http
 COPY main.go .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gows .
